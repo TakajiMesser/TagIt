@@ -1,0 +1,70 @@
+﻿<Window x:Class="TagIt.WPF.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TagIt.WPF.Views"
+        xmlns:player="clr-namespace:TagIt.WPF.Views.Player"
+        xmlns:browser="clr-namespace:TagIt.WPF.Views.Browsers"
+        xmlns:explore="clr-namespace:TagIt.WPF.Views.Explorers"
+        xmlns:tags="clr-namespace:TagIt.WPF.Views.Tags"
+        xmlns:vm="clr-namespace:TagIt.WPF.ViewModels"
+        xmlns:ab="clr-namespace:TagIt.WPF.ViewModels.AttachedBehaviors"
+        mc:Ignorable="d"
+        Title="{Binding Title}" Height="800" Width="1400" Margin="12">
+    <Window.DataContext>
+        <vm:MainWindowViewModel x:Name="ViewModel"/>
+    </Window.DataContext>
+
+    <Window.InputBindings>
+        <KeyBinding Key="Right" Command="{Binding SkipForwardCommand}" />
+        <KeyBinding Key="Left" Command="{Binding SkipBackwardCommand}" />
+        <KeyBinding Key="Space" Command="{Binding PlayPauseCommand}" />
+        <KeyBinding Key="F" Command="{Binding FullscreenCommand}" />
+    </Window.InputBindings>
+
+    <DockPanel x:Name="WindowPanel">
+        <local:MainMenu x:Name="Menu" DockPanel.Dock="Top"/>
+
+        <Grid DockPanel.Dock="Left" x:Name="WindowGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="4*"/>
+            </Grid.ColumnDefinitions>
+
+            <TabControl Name="PrimaryTabs" Grid.Column="0">
+                <TabItem Header="Player">
+                    <player:PlayerView x:Name="Player" />
+                </TabItem>
+                <TabItem Header="Browser">
+                    <browser:BrowserView x:Name="Browser" />
+                </TabItem>
+            </TabControl>
+            
+
+            <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch" Focusable="False" />
+
+            <TabControl Name="SecondaryTabs" Grid.Column="2">
+                <TabItem Header="Files">
+                    <explore:LocalExplorer x:Name="LocalExplorer" />
+                </TabItem>
+                <TabItem Header="Drive">
+                    <explore:DriveExplorer x:Name="DriveExplorer" />
+                </TabItem>
+                <TabItem Header="Tag Tree">
+                    <tags:TagTreeView x:Name="TagTree" />
+                </TabItem>
+                <TabItem Header="Tags">
+                    <tags:TagListView x:Name="TagListView" />
+                </TabItem>
+                <TabItem Header="Playlist">
+                    <player:PlaylistView x:Name="PlaylistView" />
+                </TabItem>
+            </TabControl>
+            
+        </Grid>
+        
+        
+    </DockPanel>
+</Window>

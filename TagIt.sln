@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29215.179
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TagIt.WPF", "TagIt.WPF\TagIt.WPF.csproj", "{5EBB26ED-F587-4C8D-9C1B-32657691C011}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "TagIt.Shared", "TagIt.Shared\TagIt.Shared.shproj", "{FE49D35C-0CA1-46FF-8318-0DB0B92FE521}"
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		TagIt.Shared\TagIt.Shared.projitems*{5ebb26ed-f587-4c8d-9c1b-32657691c011}*SharedItemsImports = 4
+		TagIt.Shared\TagIt.Shared.projitems*{fe49d35c-0ca1-46ff-8318-0db0b92fe521}*SharedItemsImports = 13
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5EBB26ED-F587-4C8D-9C1B-32657691C011}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EBB26ED-F587-4C8D-9C1B-32657691C011}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EBB26ED-F587-4C8D-9C1B-32657691C011}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EBB26ED-F587-4C8D-9C1B-32657691C011}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E38E8E18-768C-43AE-A1EE-279921DADDFD}
+	EndGlobalSection
+EndGlobal

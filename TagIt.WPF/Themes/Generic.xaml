@@ -1,0 +1,74 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:TagIt.WPF"
+    xmlns:custom="clr-namespace:TagIt.WPF.Views.Custom"
+    xmlns:vm="clr-namespace:TagIt.WPF.ViewModels.Custom"
+    xmlns:ab="clr-namespace:TagIt.WPF.ViewModels.AttachedBehaviors">
+
+    <!--<Style TargetType="{x:Type custom:PropertyGrid}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type custom:PropertyGrid}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>-->
+
+    <Style TargetType="{x:Type custom:ImageButtonList}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type custom:ImageButtonList}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <ItemsPresenter/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <!--<Setter Property="ItemContainerStyle">
+            <Setter.Value>
+                <Style TargetType="{x:Type vm:IImageButton}">
+                    <Setter Property="ab:MouseDoubleClick.Command" Value="{Binding OpenCommand}"/>
+                    <Setter Property="ab:MouseClick.Command" Value="{Binding SelectCommand}"/>
+                    <Setter Property="ab:MouseDrag.Command" Value="{Binding DragCommand}"/>
+                    <Setter Property="ab:MouseDrop.Command" Value="{Binding DropCommand}"/>
+                    <Setter Property="ab:MouseRightButtonDown.Command" Value="{Binding MenuCommand}"/>
+                </Style>
+            </Setter.Value>
+        </Setter>-->
+        <Setter Property="ItemTemplate">
+            <Setter.Value>
+                <DataTemplate DataType="{x:Type vm:IImageButton}">
+                    <!--<Button cb:MouseClick.Command="{Binding Path=SelectCommand}" cb:MouseDoubleClick.Command="{Binding Path=OpenCommand}" cb:MouseDrag.Command="{Binding Path=DragCommand}">-->
+                    <Border Focusable="True" ContextMenu="{Binding Path=ContextMenu}"
+                            ab:MouseClick.Command="{Binding Path=SelectCommand}">
+                            <!--:MouseDoubleClick.Command="{Binding Path=OpenCommand}">-->
+                        <Border.InputBindings>
+                            <MouseBinding MouseAction="LeftDoubleClick" Command="{Binding Path=OpenCommand}"/>
+                            <!--<MouseBinding MouseAction="LeftClick" Command="{Binding SelectCommand}"/>-->
+                        </Border.InputBindings>
+                        <StackPanel Focusable="False" Orientation="Vertical" Width="120" Height="120" ab:MouseDrag.Command="{Binding Path=DragCommand}">
+                            <Image Width="100" Height="100" Source="{Binding Path=Image}"/>
+                            <TextBlock Text="{Binding Path=Name}"/>
+                        </StackPanel>
+                    </Border>
+
+                    <!--</Button>-->
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <WrapPanel IsItemsHost="True" />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

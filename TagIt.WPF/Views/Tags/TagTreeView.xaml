@@ -1,0 +1,47 @@
+﻿<StackPanel x:Class="TagIt.WPF.Views.Tags.TagTreeView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TagIt.WPF.Views.Tags"
+        xmlns:btns="clr-namespace:TagIt.WPF.Views.Buttons"
+        xmlns:custom="clr-namespace:TagIt.WPF.Views.Custom"
+        xmlns:vm="clr-namespace:TagIt.WPF.ViewModels.Tags.Trees"
+        xmlns:ab="clr-namespace:TagIt.WPF.ViewModels.AttachedBehaviors"
+        mc:Ignorable="d"
+        Orientation="Vertical">
+    <StackPanel.DataContext>
+        <vm:TagTreeViewModel x:Name="ViewModel"></vm:TagTreeViewModel>
+    </StackPanel.DataContext>
+
+    <Label Name="Tags" FontSize="14"/>
+    
+    <TreeView Name="TagTree" BorderBrush="Transparent" ItemsSource="{Binding Children}">
+        <TreeView.ItemContainerStyle>
+            <Style TargetType="{x:Type TreeViewItem}">
+                <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}" />
+                <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
+                <Setter Property="FontWeight" Value="Normal" />
+                <Setter Property="ab:MouseDoubleClick.Command" Value="{Binding OpenCommand}"/>
+                <Setter Property="ab:MouseDrag.Command" Value="{Binding DragCommand}"/>
+                <Setter Property="ab:MouseDrop.Command" Value="{Binding DropCommand}"/>
+                <Setter Property="ab:MouseRightButtonDown.Command" Value="{Binding MenuCommand}"/>
+                <Setter Property="ContextMenu" Value="{Binding ContextMenu}"/>
+                <Style.Triggers>
+                    <Trigger Property="IsSelected" Value="True">
+                        <Setter Property="FontWeight" Value="Bold" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </TreeView.ItemContainerStyle>
+        <TreeView.ItemTemplate>
+            <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                <TextBlock Text="{Binding Name}" />
+            </HierarchicalDataTemplate>
+        </TreeView.ItemTemplate>
+    </TreeView>
+
+    <TextBox Text="{Binding NewCategory}"/>
+    <Button Command="{Binding AddCommand}">Add Category</Button>
+
+</StackPanel>

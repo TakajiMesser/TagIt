@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>fe49d35c-0ca1-46ff-8318-0db0b92fe521</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>TagIt.Shared</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\DriveHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\FilePathHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Contents\Audio\IAudio.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Contents\ContentFetcher.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Contents\ContentSet.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Contents\Document\IDocument.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Contents\IContent.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Contents\IContentProvider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Contents\IContentSet.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Contents\IFetcher.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Contents\Picture\IPicture.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Contents\Video\IVideo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Contents\Video\IVideoProvider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Contents\Video\VideoManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Drive\DriveFetcher.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Drive\DriveFile.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Drive\DriveFolder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Drive\DriveVideo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Drive\IDriveContent.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Local\ILocalContent.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Local\LocalFetcher.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Local\LocalFile.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Local\LocalFolder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Local\LocalVideo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Playlists\IPlaylist.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Playlists\Playlist.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Tags\ITag.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Tags\Tag.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Tags\TagEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Tags\TagLibrary.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Tags\TagManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Models\Playlists\" />
+  </ItemGroup>
+</Project>

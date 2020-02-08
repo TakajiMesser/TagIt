@@ -1,0 +1,35 @@
+﻿<Grid x:Class="TagIt.WPF.Views.Explorers.LocalExplorer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TagIt.WPF.Views.Explorers"
+        xmlns:btns="clr-namespace:TagIt.WPF.Views.Buttons"
+        xmlns:custom="clr-namespace:TagIt.WPF.Views.Custom"
+        xmlns:vm="clr-namespace:TagIt.WPF.ViewModels.Explorers"
+        mc:Ignorable="d">
+    <Grid.DataContext>
+        <vm:LocalExplorerViewModel x:Name="ViewModel"></vm:LocalExplorerViewModel>
+    </Grid.DataContext>
+
+    <Grid.RowDefinitions>
+        <RowDefinition Height="*"/>
+        <RowDefinition Height="3*"/>
+    </Grid.RowDefinitions>
+
+    <StackPanel Orientation="Vertical" Grid.Row="0">
+        <Label Name="ProjectType" FontSize="14"/>
+        <Button Command="{Binding BackCommand}">BACK</Button>
+
+        <Label FontSize="14">Tags</Label>
+        <btns:ToggleButtonSet x:Name="TagButtonSet" Orientation="Horizontal" />
+
+        <Label FontSize="14">Sort Style</Label>
+        <btns:ToggleEnumButton x:Name="SortStyleButton" Orientation="Horizontal" Value="{Binding Path=SortStyle, Mode=TwoWay}" />
+    </StackPanel>
+
+    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <custom:ImageButtonList ItemsSource="{Binding Children}" SelectedImages="{Binding Path=SelectedChildren, Mode=TwoWay}" SelectionMode="Extended" />
+    </ScrollViewer>
+
+</Grid>
