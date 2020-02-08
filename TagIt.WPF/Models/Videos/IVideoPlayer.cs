@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Windows.Controls;
 using TagIt.Shared.Models.Contents.Video;
 
 namespace TagIt.WPF.Models.Videos

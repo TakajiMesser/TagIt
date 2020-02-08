@@ -107,14 +107,6 @@
     <Compile Include="Helpers\DragHelper.cs" />
     <Compile Include="Models\Cmd\CmdArg.cs" />
     <Compile Include="Models\Drag\IRearrange.cs" />
-    <Compile Include="Models\Explorers\DriveLibraryManager.cs" />
-    <Compile Include="Models\Explorers\ILibraryFactory.cs" />
-    <Compile Include="Models\Explorers\FileEventArgs.cs" />
-    <Compile Include="Models\Explorers\FolderInfo.cs" />
-    <Compile Include="Models\Explorers\IFolderInfo.cs" />
-    <Compile Include="Models\Explorers\PathNode.cs" />
-    <Compile Include="Models\Explorers\FileLibraryManager.cs" />
-    <Compile Include="Models\Explorers\IPathInfo.cs" />
     <Compile Include="Models\Settings\SettingsSubset.cs" />
     <Compile Include="Models\Settings\BaseSettings.cs" />
     <Compile Include="Models\Settings\ISettingsSubset.cs" />
@@ -126,14 +118,8 @@
     <Compile Include="Models\Thumbnails\IThumbnailProvider.cs" />
     <Compile Include="Models\Thumbnails\ThumbnailManager.cs" />
     <Compile Include="Models\Thumbnails\Thumbnail.cs" />
-    <Compile Include="Models\Videos\VideoCache.cs" />
-    <Compile Include="Models\Videos\VideoEventArgs.cs" />
-    <Compile Include="Models\Videos\IVideo.cs" />
-    <Compile Include="Models\Videos\VideoBookmark.cs" />
     <Compile Include="Models\Videos\IVideoPlayer.cs" />
     <Compile Include="Models\Videos\VideoPlayer.cs" />
-    <Compile Include="Models\Videos\VideoManager.cs" />
-    <Compile Include="Models\Videos\VideoFile.cs" />
     <Compile Include="Utilities\GeometryExtensions.cs" />
     <Compile Include="Utilities\LINQExtensions.cs" />
     <Compile Include="Utilities\MathExtensions.cs" />
@@ -168,7 +154,6 @@
     <Compile Include="ViewModels\Tags\Trees\TagCategoryViewModel.cs" />
     <Compile Include="ViewModels\Tags\TagViewModel.cs" />
     <Compile Include="ViewModels\Tags\Trees\TagTreeViewModel.cs" />
-    <Compile Include="ViewModels\Explorers\FolderViewModel.cs" />
     <Compile Include="ViewModels\Explorers\LocalExplorerViewModel.cs" />
     <Compile Include="ViewModels\MainMenuViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />

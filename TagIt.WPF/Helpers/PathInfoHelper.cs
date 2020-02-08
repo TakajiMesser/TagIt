@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using TagIt.WPF.Models.Explorers;
-
-namespace TagIt.WPF.Helpers
+﻿namespace TagIt.WPF.Helpers
 {
     /*public static class PathInfoHelper
     {

@@ -42,6 +42,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\Tags\TagManager.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Models\DropBox\" />
     <Folder Include="$(MSBuildThisFileDirectory)Models\Playlists\" />
   </ItemGroup>
 </Project>
