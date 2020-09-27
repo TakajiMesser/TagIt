@@ -9,40 +9,58 @@
     <Import_RootNamespace>TagIt.Shared</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)Helpers\DriveHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\FilePathHelper.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\Contents\Audio\IAudio.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\Contents\ContentFetcher.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\Contents\ContentSet.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\Contents\Document\IDocument.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\Contents\IContent.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Contents\IContentProvider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Contents\ContentSet.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Contents\Content.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Contents\ContentManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Contents\IContent.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Contents\IContentSet.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\Contents\IFetcher.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\Contents\Picture\IPicture.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\Contents\Video\IVideo.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\Contents\Video\IVideoProvider.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\Contents\Video\VideoManager.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\Drive\DriveFetcher.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\Drive\DriveFile.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\Drive\DriveFolder.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\Drive\DriveVideo.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\Drive\IDriveContent.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\Local\ILocalContent.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\Local\LocalFetcher.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\Local\LocalFile.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\Local\LocalFolder.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\Local\LocalVideo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Fetch\Remote\CacheManifest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Fetch\Remote\CacheEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Fetch\Remote\CacheInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Fetch\Remote\Drive\DriveFetcher.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Fetch\Remote\Drive\DriveFile.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Fetch\Remote\Drive\DriveFolder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Fetch\Remote\Drive\IDriveContent.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Fetch\ContentFetcher.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Fetch\IFetcher.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Fetch\Remote\CacheResult.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Fetch\Remote\RemoteContent.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Fetch\Remote\ICacher.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Fetch\Remote\IRemoteContent.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Fetch\Local\ILocalContent.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Fetch\Local\LocalFetcher.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Fetch\Local\LocalFile.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Fetch\Local\LocalFolder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Manifests\Manifest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Playlists\IPlaylist.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Playlists\Playlist.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Previews\IThumbnailGenerator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Previews\IPreviewProvider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Previews\IPreview.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Previews\PreviewManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Previews\Preview.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Tags\ITag.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Tags\ITagProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Tags\Tag.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Tags\TagEventArgs.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\Tags\TagLibrary.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Tags\TagManifest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Tags\TagManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Viewers\IBrowser.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Viewers\IAudioListener.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Viewers\IDocumentReader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Viewers\IImageViewer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Viewers\IVideoPlayer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Viewers\Viewer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Viewers\IViewer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilities\GeometryExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilities\LINQExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilities\ListExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilities\MathExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilities\ReflectionExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Models\DropBox\" />
     <Folder Include="$(MSBuildThisFileDirectory)Models\Playlists\" />
   </ItemGroup>
 </Project>

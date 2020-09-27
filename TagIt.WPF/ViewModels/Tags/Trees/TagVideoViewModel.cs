@@ -1,13 +1,4 @@
-﻿using System.Windows;
-using System.Windows.Controls;
-using TagIt.WPF.Helpers;
-using TagIt.WPF.Models.Tags;
-using TagIt.WPF.Models.Videos;
-using TagIt.WPF.ViewModels.Player;
-using TagIt.WPF.Views;
-using TagIt.WPF.Views.Tags;
-
-namespace TagIt.WPF.ViewModels.Tags.Trees
+﻿namespace TagIt.WPF.ViewModels.Tags.Trees
 {
     /*public class TagVideoViewModel : ViewModel
     {

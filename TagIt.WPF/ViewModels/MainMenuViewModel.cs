@@ -1,8 +1,8 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.IO;
-using TagIt.WPF.Models;
 using TagIt.Shared.Models.Local;
+using TagIt.WPF.Models;
 using TagIt.WPF.ViewModels.Contents;
 using TagIt.WPF.Views.Factories;
 
@@ -26,7 +26,7 @@ namespace TagIt.WPF.ViewModels
                         var fileName = OpenDialog("mp4", "Video Files|*.mp4", ProgramSettings.InitialVideoDirectory);
                         if (fileName != null)
                         {
-                            ContentController.OpenContent(new LocalVideo(fileName));
+                            ContentController.OpenContent(new LocalFile(fileName));
                         }
                     },
                     p => true

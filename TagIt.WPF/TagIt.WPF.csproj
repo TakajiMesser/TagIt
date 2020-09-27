@@ -9,7 +9,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>TagIt.WPF</RootNamespace>
     <AssemblyName>TagIt</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -17,6 +17,7 @@
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -27,6 +28,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -36,6 +38,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Google.Apis, Version=1.43.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
@@ -101,8 +104,8 @@
     </ApplicationDefinition>
     <Compile Include="Helpers\CmdHelper.cs" />
     <Compile Include="Helpers\DirectoryHelper.cs" />
+    <Compile Include="Helpers\ImageHelper.cs" />
     <Compile Include="Helpers\ViewHelper.cs" />
-    <Compile Include="Helpers\PathInfoHelper.cs" />
     <Compile Include="Helpers\FilePathHelper.cs" />
     <Compile Include="Helpers\DragHelper.cs" />
     <Compile Include="Models\Cmd\CmdArg.cs" />
@@ -113,17 +116,13 @@
     <Compile Include="Models\Settings\ISettings.cs" />
     <Compile Include="Models\Settings\ThumbnailSettings.cs" />
     <Compile Include="Models\Settings\ProgramSettings.cs" />
-    <Compile Include="Models\Tags\ITagProvider.cs" />
-    <Compile Include="Models\Thumbnails\ThumbnailEventArgs.cs" />
-    <Compile Include="Models\Thumbnails\IThumbnailProvider.cs" />
+    <Compile Include="Models\Thumbnails\ThumbnailGenerator.cs" />
     <Compile Include="Models\Thumbnails\ThumbnailManager.cs" />
-    <Compile Include="Models\Thumbnails\Thumbnail.cs" />
-    <Compile Include="Models\Videos\IVideoPlayer.cs" />
-    <Compile Include="Models\Videos\VideoPlayer.cs" />
-    <Compile Include="Utilities\GeometryExtensions.cs" />
-    <Compile Include="Utilities\LINQExtensions.cs" />
-    <Compile Include="Utilities\MathExtensions.cs" />
-    <Compile Include="Utilities\ReflectionExtensions.cs" />
+    <Compile Include="Models\Viewers\Browser.cs" />
+    <Compile Include="Models\Viewers\AudioListener.cs" />
+    <Compile Include="Models\Viewers\ImageViewer.cs" />
+    <Compile Include="Models\Viewers\DocumentReader.cs" />
+    <Compile Include="Models\Viewers\VideoPlayer.cs" />
     <Compile Include="ViewModels\AttachedBehaviors\KeyPress.cs" />
     <Compile Include="ViewModels\AttachedBehaviors\MouseLeftButtonUp.cs" />
     <Compile Include="ViewModels\AttachedBehaviors\MouseClick.cs" />
@@ -132,8 +131,6 @@
     <Compile Include="ViewModels\AttachedBehaviors\MouseDrop.cs" />
     <Compile Include="ViewModels\AttachedBehaviors\MouseRightButtonDown.cs" />
     <Compile Include="ViewModels\Attributes\PropagateChangesAttribute.cs" />
-    <Compile Include="ViewModels\Browsers\IBrowser.cs" />
-    <Compile Include="ViewModels\Browsers\BrowserViewModel.cs" />
     <Compile Include="ViewModels\Commands\Command.cs" />
     <Compile Include="ViewModels\Commands\ICommand.cs" />
     <Compile Include="ViewModels\Commands\RelayCommand.cs" />
@@ -145,8 +142,17 @@
     <Compile Include="ViewModels\Explorers\IExplorer.cs" />
     <Compile Include="ViewModels\Explorers\ImageButtonViewModel.cs" />
     <Compile Include="ViewModels\Explorers\ContentViewModel.cs" />
-    <Compile Include="ViewModels\Player\IPlaylistController.cs" />
-    <Compile Include="ViewModels\Player\PlaylistViewModel.cs" />
+    <Compile Include="ViewModels\Explorers\ExplorerViewModel.cs" />
+    <Compile Include="ViewModels\Tabs\PanelViewModel.cs" />
+    <Compile Include="ViewModels\Viewers\BrowserPanelViewModel.cs" />
+    <Compile Include="ViewModels\Viewers\AudioListenerPanelViewModel.cs" />
+    <Compile Include="ViewModels\Viewers\ImageViewerPanelViewModel.cs" />
+    <Compile Include="ViewModels\Viewers\IViewerViewModel.cs" />
+    <Compile Include="ViewModels\Viewers\DocumentReaderPanelViewModel.cs" />
+    <Compile Include="ViewModels\Viewers\ViewerViewModel.cs" />
+    <Compile Include="ViewModels\WindowViewModel.cs" />
+    <Compile Include="ViewModels\Playlists\IPlaylistController.cs" />
+    <Compile Include="ViewModels\Playlists\PlaylistViewModel.cs" />
     <Compile Include="ViewModels\Settings\IPropertyDisplayer.cs" />
     <Compile Include="ViewModels\Tags\Trees\TagVideoViewModel.cs" />
     <Compile Include="ViewModels\Tags\TagListViewModel.cs" />
@@ -157,12 +163,9 @@
     <Compile Include="ViewModels\Explorers\LocalExplorerViewModel.cs" />
     <Compile Include="ViewModels\MainMenuViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
-    <Compile Include="ViewModels\Player\PlayerViewModel.cs" />
+    <Compile Include="ViewModels\Viewers\VideoPlayerPanelViewModel.cs" />
     <Compile Include="ViewModels\Settings\SettingsWindowViewModel.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />
-    <Compile Include="Views\Browsers\BrowserView.xaml.cs">
-      <DependentUpon>BrowserView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\Buttons\EnumSourceExtension.cs" />
     <Compile Include="Views\Buttons\EnumToStringConverter.cs" />
     <Compile Include="Views\Buttons\InverseBooleanConverter.cs" />
@@ -176,9 +179,13 @@
     <Compile Include="Views\Explorers\DriveExplorer.xaml.cs">
       <DependentUpon>DriveExplorer.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Player\PlaylistView.xaml.cs">
+    <Compile Include="Views\Factories\IPanelFactory.cs" />
+    <Compile Include="Views\PanelManager.cs" />
+    <Compile Include="Views\Playlists\PlaylistView.xaml.cs">
       <DependentUpon>PlaylistView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Tabs\TabTracker.cs" />
+    <Compile Include="Views\Tabs\ITabTracker.cs" />
     <Compile Include="Views\Tags\ITagRearranger.cs" />
     <Compile Include="Views\Tags\TagListView.xaml.cs">
       <DependentUpon>TagListView.xaml</DependentUpon>
@@ -189,7 +196,7 @@
     <Compile Include="Views\Explorers\LocalExplorer.xaml.cs">
       <DependentUpon>LocalExplorer.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Factories\IWindow.cs" />
+    <Compile Include="Views\Factories\IWindowFactory.cs" />
     <Compile Include="Views\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
@@ -200,9 +207,21 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Views\IWindow.cs" />
-    <Compile Include="Views\Player\PlayerView.xaml.cs">
-      <DependentUpon>PlayerView.xaml</DependentUpon>
+    <Compile Include="Views\Factories\IWindow.cs" />
+    <Compile Include="Views\Viewers\BrowserPanel.xaml.cs">
+      <DependentUpon>BrowserPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Viewers\AudioListenerPanel.xaml.cs">
+      <DependentUpon>AudioListenerPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Viewers\ImageViewerPanel.xaml.cs">
+      <DependentUpon>ImageViewerPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Viewers\DocumentReaderPanel.xaml.cs">
+      <DependentUpon>DocumentReaderPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Viewers\VideoPlayerPanel.xaml.cs">
+      <DependentUpon>VideoPlayerPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Settings\SettingsWindow.xaml.cs">
       <DependentUpon>SettingsWindow.xaml</DependentUpon>
@@ -219,10 +238,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Browsers\BrowserView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Views\Buttons\ToggleButtonSet.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -235,7 +250,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Player\PlaylistView.xaml">
+    <Page Include="Views\Playlists\PlaylistView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -259,7 +274,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Player\PlayerView.xaml">
+    <Page Include="Views\Viewers\BrowserPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Viewers\AudioListenerPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Viewers\ImageViewerPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Viewers\DocumentReaderPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Viewers\VideoPlayerPanel.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -295,15 +326,419 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\baseline_access_alarm_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_add_alert_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_add_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_add_shopping_cart_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_addchart_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_admin_panel_settings_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_alarm_add_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_alarm_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_alarm_off_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_analytics_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_announcement_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_app_blocking_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_archive_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_arrow_right_alt_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_auto_delete_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_autorenew_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_av_timer_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_backup_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_bathtub_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_book_online_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_bookmark_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_bookmark_border_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_brightness_high_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_brightness_low_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_bug_report_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_calendar_today_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_child_care_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_child_friendly_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_clear_all_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_clear_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_contact_support_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_content_copy_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_content_cut_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_content_paste_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_create_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_dashboard_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_date_range_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_delete_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_delete_sweep_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_description_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_developer_mode_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_done_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_drag_indicator_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_eco_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_emoji_food_beverage_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_emoji_nature_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_emoji_transportation_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_error_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_error_outline_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_event_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_feedback_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_filter_alt_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_filter_list_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_find_in_page_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_flag_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_grade_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_grass_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_help_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_history_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_home_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_horizontal_split_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_https_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_invert_colors_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_invert_colors_off_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_king_bed_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_launch_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_list_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_location_off_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_location_on_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_login_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_loop_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_loyalty_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_mail_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_more_time_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_nights_stay_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_not_listed_location_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_note_add_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_notification_important_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_notifications_active_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_notifications_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_notifications_off_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_opacity_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_open_in_full_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_pause_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_perm_contact_calendar_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_person_add_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_pest_control_rodent_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_pets_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_play_arrow_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_poll_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_power_settings_new_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_privacy_tip_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_psychology_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_public_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_reorder_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_repeat_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_restaurant_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_school_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_self_improvement_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_settings_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_share_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_snooze_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_soap_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_sort_by_alpha_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_stop_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_swap_horiz_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_swap_vert_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_sync_alt_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_table_view_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_thumb_down_alt_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_thumb_up_alt_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_thumbs_up_down_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_timeline_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_toc_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_touch_app_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_umbrella_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_unarchive_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_view_agenda_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_view_column_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_view_day_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_view_headline_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_view_list_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_view_module_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_view_week_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_visibility_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_visibility_off_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_volume_down_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_volume_mute_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_volume_off_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_volume_up_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_warning_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_wc_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_work_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_zoom_in_black_36dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baseline_zoom_out_black_36dp.png" />
+  </ItemGroup>
   <Import Project="..\TagIt.Shared\TagIt.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\packages\Fody.6.0.6\build\Fody.targets" Condition="Exists('..\packages\Fody.6.0.6\build\Fody.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Fody.6.0.6\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.6.0.6\build\Fody.targets'))" />
     <Error Condition="!Exists('..\packages\PropertyChanged.Fody.3.2.1\build\PropertyChanged.Fody.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\PropertyChanged.Fody.3.2.1\build\PropertyChanged.Fody.props'))" />
+    <Error Condition="!Exists('..\packages\Fody.6.2.5\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.6.2.5\build\Fody.targets'))" />
   </Target>
+  <Import Project="..\packages\Fody.6.2.5\build\Fody.targets" Condition="Exists('..\packages\Fody.6.2.5\build\Fody.targets')" />
 </Project>

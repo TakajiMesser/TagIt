@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using TagIt.Shared.Models.Contents;
-using TagIt.Shared.Models.Contents.Video;
 
 namespace TagIt.Shared.Models.Playlists
 {

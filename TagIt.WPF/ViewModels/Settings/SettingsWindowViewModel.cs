@@ -1,7 +1,6 @@
 ﻿using System.Linq;
-using TagIt.WPF.Helpers;
 using TagIt.WPF.Models;
-using TagIt.WPF.Views;
+using TagIt.WPF.Views.Factories;
 
 namespace TagIt.WPF.ViewModels.Settings
 {

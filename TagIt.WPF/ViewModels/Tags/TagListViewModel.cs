@@ -2,11 +2,12 @@
 using System.Collections.ObjectModel;
 using TagIt.Shared.Models.Contents;
 using TagIt.Shared.Models.Tags;
-using TagIt.WPF.Models.Videos;
+using TagIt.Shared.Models.Viewers;
+using TagIt.ViewModels.Tabs;
 
 namespace TagIt.WPF.ViewModels.Tags
 {
-    public class TagListViewModel : ViewModel
+    public class TagListViewModel : PanelViewModel
     {
         private IVideoPlayer _videoPlayer;
         private List<TagViewModel> _tags = new List<TagViewModel>();
@@ -22,17 +23,17 @@ namespace TagIt.WPF.ViewModels.Tags
             {
                 if (!string.IsNullOrEmpty(NewTagName))
                 {
-                    var video = _videoPlayer.Video;
+                    var content = _videoPlayer.Content;
 
                     if (!TagManager.Instance.HasTag(NewTagName))
                     {
                         var tag = TagManager.Instance.CreateTag(NewTagName);
-                        tag.AddContent(video);
-                        _tags.Add(new TagViewModel(tag.Name, video));
+                        tag.AddContent(content);
+                        _tags.Add(new TagViewModel(tag.Name, content));
                     }
                     else
                     {
-                        TagManager.Instance.TagContent(NewTagName, video);
+                        TagManager.Instance.TagContent(NewTagName, content);
                     }
 
                     Tags = new ObservableCollection<TagViewModel>(_tags);
@@ -40,7 +41,7 @@ namespace TagIt.WPF.ViewModels.Tags
 
                 NewTagName = "";
             },
-            p => true
+            p => _videoPlayer != null && _videoPlayer.Content != null
         ));
 
         public void SetVideoPlayer(IVideoPlayer videoPlayer)
@@ -48,7 +49,7 @@ namespace TagIt.WPF.ViewModels.Tags
             _videoPlayer = videoPlayer;
             _videoPlayer.Opened += (s, args) =>
             {
-                UpdateFromModel(_videoPlayer.Video);
+                UpdateFromModel(_videoPlayer.Content);
             };
         }
 

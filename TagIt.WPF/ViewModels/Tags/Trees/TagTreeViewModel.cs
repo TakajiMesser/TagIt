@@ -3,12 +3,13 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using TagIt.Shared.Models.Tags;
+using TagIt.ViewModels.Tabs;
 using TagIt.WPF.ViewModels.Contents;
 using TagIt.WPF.Views.Tags;
 
 namespace TagIt.WPF.ViewModels.Tags.Trees
 {
-    public class TagTreeViewModel : ViewModel, ITagRearranger
+    public class TagTreeViewModel : PanelViewModel, ITagRearranger
     {
         private IContentController _contentController;
         private List<TagCategoryViewModel> _categories = new List<TagCategoryViewModel>();

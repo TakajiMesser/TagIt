@@ -2,8 +2,11 @@
 using System.Linq;
 using System.Windows.Controls;
 using TagIt.Shared.Models.Contents;
+using TagIt.Shared.Models.Local;
 using TagIt.Shared.Models.Tags;
+using TagIt.WPF.Helpers;
 using TagIt.WPF.Models.Thumbnails;
+using TagIt.WPF.Properties;
 using TagIt.WPF.ViewModels.Contents;
 
 namespace TagIt.WPF.ViewModels.Explorers
@@ -33,18 +36,51 @@ namespace TagIt.WPF.ViewModels.Explorers
 
         public IContent Content { get; }
 
+        
+
         public async void GetOrGenerateThumbnail()
         {
-            var thumbnail = ThumbnailManager.Instance.HasThumbnail(Content)
-                ? ThumbnailManager.Instance.GetThumbnail(Content)
-                : ThumbnailManager.Instance.CreateThumbnail(Content);
-
-            var image = await thumbnail.GetImage();
-
-            if (image != null)
+            if (Content.Kind == Kinds.Folder)
             {
-                Image = image;
-                //InvokePropertyChanged(nameof(Icon));
+                Image = ImageHelper.FastConvertToBitmapSource(Resources.baseline_work_black_36dp);
+            }
+            else if (Content.Kind == Kinds.Document)
+            {
+                Image = ImageHelper.FastConvertToBitmapSource(Resources.baseline_description_black_36dp);
+            }
+            else if (Content.Kind == Kinds.Image)
+            {
+                if (Content is ILocalContent)
+                {
+                    Image = ImageHelper.ConvertToBitmapSource(ImageHelper.GetThumbnail(Content.Path, 100, 100, ImageHelper.ThumbnailOptions.InCacheOnly));
+                }
+                else
+                {
+                    Image = ImageHelper.FastConvertToBitmapSource(Resources.baseline_contact_support_black_36dp);
+                }
+            }
+            else if (Content.Kind == Kinds.Video)
+            {
+                Image = ImageHelper.FastConvertToBitmapSource(Resources.baseline_visibility_black_36dp);
+            }
+            else if (Content.Kind == Kinds.Audio)
+            {
+                Image = ImageHelper.FastConvertToBitmapSource(Resources.baseline_volume_up_black_36dp);
+            }
+            else
+            {
+                var preview = await _contentController.PreviewProvider.GetPreview(Content);
+
+                if (_contentController.PreviewProvider.ThumbnailGenerator is ThumbnailGenerator thumbnailGenerator)
+                {
+                    var image = thumbnailGenerator.GetThumbnailImage(preview.Path);
+
+                    if (image != null)
+                    {
+                        Image = image;
+                        //InvokePropertyChanged(nameof(Icon));
+                    }
+                }
             }
         }
 

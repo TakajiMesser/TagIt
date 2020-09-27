@@ -1,24 +1,20 @@
 ﻿using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.IO;
-using System.Threading.Tasks;
-using System.Windows.Media.Imaging;
-using TagIt.WPF.Helpers;
-using TagIt.WPF.Models.Cmd;
-using TagIt.WPF.Models.Videos;
-using System.Linq;
 using TagIt.Shared.Models.Contents;
-using TagIt.Shared.Models.Local;
-using TagIt.Shared.Models.Drive;
 
 namespace TagIt.WPF.Models.Thumbnails
 {
     public class ThumbnailManager// : IThumbnailProvider
     {
-        public const string FILE_EXTENSION = ".thm";
+        /*public const string FILE_EXTENSION = ".thm";
         //public const int CACHE_LIMIT = 100;
         public const string FILE_PREFIX = "ThumbnailLibrary";
+
+        private Dictionary<int, Thumbnail> _thumbnailByID = new Dictionary<int, Thumbnail>();
+
+        private object _saveLock = new object();
+
+        private ThumbnailManager() { }
 
         private static ThumbnailManager _instance;
         public static ThumbnailManager Instance
@@ -33,44 +29,14 @@ namespace TagIt.WPF.Models.Thumbnails
                 return _instance;
             }
         }
-        private ThumbnailManager() { }
-
-        private Dictionary<string, Thumbnail> _thumbnailsByFilePath = new Dictionary<string, Thumbnail>();
-        private Dictionary<string, Thumbnail> _thumbnailsByDriveID = new Dictionary<string, Thumbnail>();
 
         public event EventHandler<ThumbnailEventArgs> ThumbnailGenerated;
 
-        private object _saveLock = new object();
+        public IEnumerable<Thumbnail> GetThumbnails() => _thumbnailByID.Values;
 
-        public IEnumerable<Thumbnail> GetThumbnails() => _thumbnailsByFilePath.Values.Concat(_thumbnailsByDriveID.Values);
+        public bool HasThumbnail(IContent content) => _thumbnailByID.ContainsKey(content.ID);
 
-        public bool HasThumbnail(IContent content)
-        {
-            if (content is ILocalContent localContent)
-            {
-                return _thumbnailsByFilePath.ContainsKey(localContent.Path);
-            }
-            else if (content is IDriveContent driveContent)
-            {
-                return _thumbnailsByDriveID.ContainsKey(driveContent.ID);
-            }
-
-            return false;
-        }
-
-        public Thumbnail GetThumbnail(IContent content)
-        {
-            if (content is ILocalContent localContent)
-            {
-                return _thumbnailsByFilePath[localContent.Path];
-            }
-            else if (content is IDriveContent driveContent)
-            {
-                return _thumbnailsByDriveID[driveContent.ID];
-            }
-
-            return null;
-        }
+        public Thumbnail GetThumbnail(IContent content) => _thumbnailByID[content.ID];
 
         /*public async Task<Thumbnail> GetThumbnail(string filePath)
         {
@@ -82,21 +48,13 @@ namespace TagIt.WPF.Models.Thumbnails
             return _thumbnailBySourcePath[filePath];
         }*/
 
-        public Thumbnail CreateThumbnail(IContent content)
+        /*public Thumbnail CreateThumbnail(IContent content)
         {
             var thumbnail = new Thumbnail(content);
-
-            if (content is ILocalContent localContent)
-            {
-                _thumbnailsByFilePath.Add(localContent.Path, thumbnail);
-            }
-            else if (content is IDriveContent driveContent)
-            {
-                _thumbnailsByDriveID.Add(driveContent.ID, thumbnail);
-            }
+            _thumbnailByID.Add(content.ID, thumbnail);
 
             return thumbnail;
-        }
+        }*/
 
         /*public void GenerateThumbnail(IVideo video)
         {

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TagIt.WPF", "TagIt.WPF\TagI
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "TagIt.Shared", "TagIt.Shared\TagIt.Shared.shproj", "{FE49D35C-0CA1-46FF-8318-0DB0B92FE521}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TagIt.Droid", "TagIt.Droid\TagIt.Droid.csproj", "{37B8AE2B-839A-4E37-95A8-168E48D97B5F}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		TagIt.Shared\TagIt.Shared.projitems*{5ebb26ed-f587-4c8d-9c1b-32657691c011}*SharedItemsImports = 4
@@ -21,6 +23,12 @@ Global
 		{5EBB26ED-F587-4C8D-9C1B-32657691C011}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5EBB26ED-F587-4C8D-9C1B-32657691C011}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5EBB26ED-F587-4C8D-9C1B-32657691C011}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37B8AE2B-839A-4E37-95A8-168E48D97B5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37B8AE2B-839A-4E37-95A8-168E48D97B5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37B8AE2B-839A-4E37-95A8-168E48D97B5F}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{37B8AE2B-839A-4E37-95A8-168E48D97B5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37B8AE2B-839A-4E37-95A8-168E48D97B5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37B8AE2B-839A-4E37-95A8-168E48D97B5F}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

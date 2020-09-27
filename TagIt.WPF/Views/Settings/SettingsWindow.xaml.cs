@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using TagIt.WPF.ViewModels.Settings;
+using TagIt.WPF.Views.Factories;
 using Xceed.Wpf.Toolkit.PropertyGrid;
 
 namespace TagIt.WPF.Views.Settings

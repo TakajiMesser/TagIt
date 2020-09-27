@@ -1,7 +1,14 @@
-﻿namespace TagIt.WPF.Views.Factories
+﻿using System.Windows;
+
+namespace TagIt.WPF.Views.Factories
 {
-    public interface IWindowFactory
+    public interface IWindow
     {
-        void CreateSettingsWindow();
+        WindowStyle WindowStyle { get; set; }
+        WindowState WindowState { get; set; }
+
+        object Content { get; set; }
+
+        void Close();
     }
 }

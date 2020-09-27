@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Windows;
 using TagIt.WPF.Views.Factories;
 using TagIt.WPF.Views.Settings;
+using TagIt.WPF.Views.Tabs;
 
 namespace TagIt.WPF.Views
 {
@@ -11,22 +12,23 @@ namespace TagIt.WPF.Views
     /// </summary>
     public partial class MainWindow : Window, IWindowFactory, IWindow
     {
+        private PanelManager _panelManager;
         private SettingsWindow _settingsWindow;
 
         public MainWindow()
         {
             PresentationTraceSources.DataBindingSource.Listeners.Add(new ConsoleTraceListener());
             PresentationTraceSources.DataBindingSource.Switch.Level = SourceLevels.Error;
-
             InitializeComponent();
+
+            _panelManager = new PanelManager(ViewModel, new TabTracker(MainTabs, SideTabs));
+            _panelManager.InitializePanels();
 
             Menu.ViewModel.WindowFactory = this;
             Menu.ViewModel.ContentController = ViewModel;
 
             ViewModel.Window = this;
-
-            ViewModel.VideoPlayerViewModel = Player.ViewModel;
-            ViewModel.BrowserViewModel = Browser.ViewModel;
+            //ViewModel.ViewerViewModel = Player.ViewModel;
 
             ViewModel.LocalExplorerViewModel = LocalExplorer.ViewModel;
             ViewModel.DriveExplorerViewModel = DriveExplorer.ViewModel;
@@ -35,34 +37,8 @@ namespace TagIt.WPF.Views
             ViewModel.PlaylistViewModel = PlaylistView.ViewModel;
 
             ViewModel.OpenLibraries();
-        }
 
-        private bool _isFullscreen = false;
-
-        public void ToggleFullscreen()
-        {
-            if (_isFullscreen)
-            {
-                WindowStyle = WindowStyle.SingleBorderWindow;
-                WindowState = WindowState.Normal;
-
-                var mediaElement = Content as UIElement;
-                Content = WindowPanel;
-                Player.RootGrid.Children.Add(mediaElement);
-
-                _isFullscreen = false;
-            }
-            else
-            {
-                WindowStyle = WindowStyle.None;
-                WindowState = WindowState.Maximized;
-
-                var mediaElement = Player.Player;
-                Player.RootGrid.Children.Remove(mediaElement);
-                Content = mediaElement;
-
-                _isFullscreen = true;
-            }
+            ViewModel.Initialize();
         }
 
         protected override void OnClosing(CancelEventArgs e)

@@ -4,8 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TagIt.WPF.Views"
-        xmlns:player="clr-namespace:TagIt.WPF.Views.Player"
-        xmlns:browser="clr-namespace:TagIt.WPF.Views.Browsers"
+        xmlns:playlists="clr-namespace:TagIt.WPF.Views.Playlists"
         xmlns:explore="clr-namespace:TagIt.WPF.Views.Explorers"
         xmlns:tags="clr-namespace:TagIt.WPF.Views.Tags"
         xmlns:vm="clr-namespace:TagIt.WPF.ViewModels"
@@ -28,24 +27,16 @@
 
         <Grid DockPanel.Dock="Left" x:Name="WindowGrid">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="5"/>
-                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="7*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
 
-            <TabControl Name="PrimaryTabs" Grid.Column="0">
-                <TabItem Header="Player">
-                    <player:PlayerView x:Name="Player" />
-                </TabItem>
-                <TabItem Header="Browser">
-                    <browser:BrowserView x:Name="Browser" />
-                </TabItem>
-            </TabControl>
-            
+            <TabControl Name="MainTabs" Grid.Column="0" />
 
             <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch" Focusable="False" />
 
-            <TabControl Name="SecondaryTabs" Grid.Column="2">
+            <TabControl Name="SideTabs" Grid.Column="2">
                 <TabItem Header="Files">
                     <explore:LocalExplorer x:Name="LocalExplorer" />
                 </TabItem>
@@ -59,7 +50,7 @@
                     <tags:TagListView x:Name="TagListView" />
                 </TabItem>
                 <TabItem Header="Playlist">
-                    <player:PlaylistView x:Name="PlaylistView" />
+                    <playlists:PlaylistView x:Name="PlaylistView" />
                 </TabItem>
             </TabControl>
             

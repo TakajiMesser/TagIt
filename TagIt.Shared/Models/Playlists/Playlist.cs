@@ -20,9 +20,9 @@ namespace TagIt.Shared.Models.Playlists
         {
             foreach (var content in Contents)
             {
-                if (content is LocalVideo videoFile)
+                if (content is LocalFile localFile)
                 {
-                    yield return "[FILE] - " + videoFile.Path;
+                    yield return "[FILE] - " + localFile.Path;
                 }
             }
         }
@@ -36,10 +36,12 @@ namespace TagIt.Shared.Models.Playlists
 
             foreach (var line in File.ReadLines(filePath))
             {
-                if (line.StartsWith("[FILE] - "))
+                var prefix = "[FILE] - ";
+
+                if (line.StartsWith(prefix))
                 {
-                    var videoPath = line.Substring(9);
-                    playlist.Contents.Add(new LocalVideo(videoPath));
+                    var path = line.Substring(prefix.Length);
+                    playlist.Contents.Add(new LocalFile(path));
                 }
             }
 

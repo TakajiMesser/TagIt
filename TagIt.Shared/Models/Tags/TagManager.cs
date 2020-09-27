@@ -65,11 +65,12 @@ namespace TagIt.Shared.Models.Tags
         public event EventHandler<EventArgs> CategoriesChanged;
         public event EventHandler<EventArgs> TagsChanged;
 
-        public void AddFromLibrary(string filePath)
+        public void AddFromManifest(string filePath)
         {
-            var tagLibrary = TagLibrary.Load(filePath);
+            var manifest = new TagManifest(filePath);
+            manifest.Load();
 
-            foreach (var tag in tagLibrary.Tags)
+            foreach (var tag in manifest.Tags)
             {
                 _tagByName.Add(tag.Name, tag);
 
@@ -89,22 +90,19 @@ namespace TagIt.Shared.Models.Tags
             }
         }
 
-        public void SaveToLibrary(string filePath)
+        public void SaveToManifest(string filePath)
         {
-            var tagLibrary = new TagLibrary()
-            {
-                FilePath = filePath
-            };
+            var manifest = new TagManifest(filePath);
 
             foreach (var tag in Tags)
             {
                 if (tag is Tag castTag)
                 {
-                    tagLibrary.Tags.Add(castTag);
+                    manifest.Tags.Add(castTag);
                 }
             }
 
-            tagLibrary.Save();
+            manifest.Save();
         }
 
         public bool HasTag(string name) => _tagByName.ContainsKey(name);

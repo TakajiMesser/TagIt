@@ -3,27 +3,24 @@ using System.Linq;
 
 namespace TagIt.Shared.Models.Contents
 {
-    public class ContentSet<T> : IContentSet where T : IContent
+    public abstract class ContentSet<T> : Content, IContentSet where T : IContent
     {
-        private List<T> _contents = new List<T>();
+        private List<T> _children = new List<T>();
 
-        public ContentSet(string name) => Name = name;
+        public ContentSet(string name, string path) : base(name, path) => Kind = Kinds.Folder;
 
-        public string Name { get; }
-        public IContentSet Parent { get; set; }
+        public IEnumerable<T> Children => _children;
+        public int ChildCount => _children.Count;
 
-        public IEnumerable<T> Children => _contents;
-        public int Count => _contents.Count;
-
-        public void AddContent(T content)
+        public void AddChild(T content)
         {
             content.Parent = this;
-            _contents.Add(content);
+            _children.Add(content);
         }
 
-        public T GetContent(int index) => _contents[index];
-        public T GetContent(string name) => _contents.FirstOrDefault(c => c.Name == name);
+        public T GetContent(int index) => _children[index];
+        public T GetContent(string name) => _children.FirstOrDefault(c => c.Name == name);
 
-        public void Clear() => _contents.Clear();
+        public void Clear() => _children.Clear();
     }
 }
