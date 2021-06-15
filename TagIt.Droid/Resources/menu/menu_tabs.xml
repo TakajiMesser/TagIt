@@ -1,0 +1,33 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+  
+    <item
+        android:id="@+id/tab_local"
+        android:enabled="true"
+        android:icon="@drawable/baseline_home_black_36dp"
+        android:title="@string/tab_local_title"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/tab_remote"
+        android:enabled="true"
+        android:icon="@drawable/baseline_pets_black_36dp"
+        android:title="@string/tab_remote_title"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/tab_tags"
+        android:enabled="true"
+        android:icon="@drawable/baseline_access_alarm_black_36dp"
+        android:title="@string/tab_tags_title"
+        app:showAsAction="ifRoom" />
+  
+    <item
+        android:id="@+id/tab_playlists"
+        android:enabled="true"
+        android:icon="@drawable/baseline_analytics_black_36dp"
+        android:title="@string/tab_playlists_title"
+        app:showAsAction="ifRoom" />
+
+</menu>

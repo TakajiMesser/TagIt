@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:theme="@style/PrefsTheme">
+
+    <PreferenceScreen
+        android:key="display_settings"
+        android:title="Display Settings"
+        app:iconSpaceReserved="false">
+
+        <PreferenceCategory
+            android:title="Display Settings"
+            app:iconSpaceReserved="false">
+
+            <ListPreference
+                android:key="display_theme"
+                android:title="Theme"
+                android:dialogTitle="Theme"
+                android:summary="Theme for display colors and styling"
+                android:entries="@array/Themes"
+                android:entryValues="@array/ThemeValues"
+                android:defaultValue="light"
+                app:iconSpaceReserved="false" />
+
+            <CheckBoxPreference
+                android:key="stay_active"
+                android:title="Stay Active?"
+                android:summary="Keep screen on while app is open"
+                android:defaultValue="false"
+                app:iconSpaceReserved="false" />
+          
+        </PreferenceCategory>
+      
+    </PreferenceScreen>
+  
+    <PreferenceScreen
+        android:key="developer_settings"
+        android:title="Developer Settings"
+        app:iconSpaceReserved="false">
+
+        <PreferenceCategory
+            android:title="Developer Settings"
+            app:iconSpaceReserved="false">
+
+            <Preference
+                android:key="view_debug_log"
+                android:title="View Debug Log"
+                app:iconSpaceReserved="false" />
+
+            <Preference
+                android:key="reset_defaults"
+                android:title="Reset to Default Values"
+                app:iconSpaceReserved="false" />
+
+        </PreferenceCategory>
+
+    </PreferenceScreen>
+
+    <PreferenceScreen
+        android:key="about_settings"
+        android:title="About TagIt"
+        app:iconSpaceReserved="false">
+
+        <PreferenceCategory
+            android:title="About PetLogger"
+            app:iconSpaceReserved="false">
+
+            <Preference
+                android:key="version"
+                android:title="App version"
+                app:iconSpaceReserved="false" />
+
+        </PreferenceCategory>
+
+    </PreferenceScreen>
+  
+</PreferenceScreen>

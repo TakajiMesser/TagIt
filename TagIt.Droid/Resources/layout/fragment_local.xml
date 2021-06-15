@@ -1,0 +1,52 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/content_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:listSelector="@android:color/transparent"
+        android:cacheColorHint="@android:color/transparent" />
+
+    <com.tagit.droid.components.FloatingActionMenu
+        android:id="@+id/fam_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:paddingRight="20dp"
+        android:paddingBottom="20dp"
+        app:buttonBackgroundColor="#D0607D8B"
+        app:openDirection="up">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_add_file"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/umbrella_white_36dp"
+            app:backgroundTint="#607D8B"
+            app:fabSize="mini"
+            app:elevation="6dp"
+            app:borderWidth="0dp"
+            app:layout_labelText="Add File"
+            app:layout_labelDirection="left" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_add_folder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_toc_white_24dp"
+            app:backgroundTint="#546E7A"
+            app:fabSize="mini"
+            app:elevation="6dp"
+            app:borderWidth="0dp"
+            app:layout_labelText="Add Folder"
+            app:layout_labelDirection="left" />
+
+    </com.tagit.droid.components.FloatingActionMenu>
+
+</RelativeLayout>
