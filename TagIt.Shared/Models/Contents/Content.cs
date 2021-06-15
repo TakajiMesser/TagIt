@@ -15,7 +15,7 @@ namespace TagIt.Shared.Models.Contents
         public string Name { get; }
         public string Path { get; }
 
-        public IContent Parent { get; set; }
+        public IContentSet Parent { get; set; }
 
         public Kinds Kind { get; protected set; }
         public long Size { get; protected set; }

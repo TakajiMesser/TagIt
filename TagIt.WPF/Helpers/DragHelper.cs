@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows;
 using TagIt.Shared.Utilities;
+using TagIt.WPF.Utilities;
 
 namespace TagIt.WPF.Helpers
 {

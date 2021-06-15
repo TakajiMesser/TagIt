@@ -18,7 +18,7 @@
         string Name { get; }
         string Path { get; }
 
-        IContent Parent { get; set; }
+        IContentSet Parent { get; set; }
 
         Kinds Kind { get; }
         long Size { get; }

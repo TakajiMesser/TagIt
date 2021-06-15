@@ -5,12 +5,12 @@ namespace TagIt.Shared.Models.Contents
     public interface IContentSet : IContent { }
     public interface IContentSet<T> : IContentSet where T : IContent
     {
-        IEnumerable<T> Children { get; }
-        int ChildCount { get; }
+        IEnumerable<T> Contents { get; }
+        int ContentCount { get; }
 
-        void AddContent(IContent content);
-        IContent GetContent(int index);
-        IContent GetContent(string name);
+        void AddContent(T content);
+        T GetContent(int index);
+        T GetContent(string name);
         void Clear();
     }
 }

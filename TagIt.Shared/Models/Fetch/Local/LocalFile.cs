@@ -39,7 +39,7 @@ namespace TagIt.Shared.Models.Local
                 case ".doc":
                 case ".docx":
                     return Kinds.Document;
-                case "png":
+                case ".png":
                 case ".jpg":
                 case ".jpeg":
                     return Kinds.Image;

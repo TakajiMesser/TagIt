@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace TagIt.Shared.Utilities
+namespace TagIt.WPF.Utilities
 {
     public static class GeometryExtensions
     {

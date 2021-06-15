@@ -10,7 +10,6 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using TagIt.Shared.Helpers;
-using TagIt.Shared.Models.Contents;
 using TagIt.Shared.Models.Fetch;
 
 namespace TagIt.Shared.Models.Remote.Drive
@@ -32,7 +31,7 @@ namespace TagIt.Shared.Models.Remote.Drive
             });
         }*/
 
-        public DriveFetcher(IContentProvider contentProvider) : base(contentProvider, "Drive") { }
+        public DriveFetcher() : base("Drive") { }
 
         public event EventHandler<CacheEventArgs> ContentCached;
 
@@ -105,7 +104,7 @@ namespace TagIt.Shared.Models.Remote.Drive
                     {
                         if (GetContent(parentPath) is DriveFolder parentFolder && contentFile is DriveFile childFile)
                         {
-                            parentFolder.AddChild(childFile);
+                            parentFolder.AddContent(childFile);
                         }
                     }
                     else

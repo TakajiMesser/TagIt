@@ -11,7 +11,7 @@ namespace TagIt.Shared.Models.Remote
         public CacheManifest(string filePath) : base(filePath) { }
 
         public string FetcherName { get; set; }
-        public List<CacheInfo> CacheInfos { get; set; }
+        public List<CacheInfo> CacheInfos { get; set; } = new List<CacheInfo>();
 
         protected override IEnumerable<string> WriteLines()
         {

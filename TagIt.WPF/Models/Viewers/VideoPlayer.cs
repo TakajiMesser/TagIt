@@ -68,7 +68,7 @@ namespace TagIt.WPF.Models.Viewers
             {
                 var result = await remoteContent.DownloadAsync().ConfigureAwait(true);
 
-                if (result)
+                if (result.IsSuccess)
                 {
                     MediaElement.Source = new Uri(remoteContent.CachedPath);
                 }

@@ -18,8 +18,8 @@
         <RowDefinition Height="Auto"/>
     </Grid.RowDefinitions>
 
-    <ScrollViewer Name="ImageScroll" CanContentScroll="True" Grid.Row="0">
-        <Image Name="ImageElement" HorizontalAlignment="Left" VerticalAlignment="Top" Stretch="UniformToFill" MouseWheel="ImageElement_MouseWheel"/>
+    <ScrollViewer Name="ImageScroll" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible" PreviewMouseLeftButtonDown="ImageScroll_PreviewMouseLeftButtonDown" PreviewMouseMove="ImageScroll_PreviewMouseMove" PreviewMouseWheel="ImageScroll_PreviewMouseWheel" Grid.Row="0">
+        <Image Name="ImageElement" Stretch="Uniform" />
     </ScrollViewer>
 
     <StatusBar Grid.Row="1">

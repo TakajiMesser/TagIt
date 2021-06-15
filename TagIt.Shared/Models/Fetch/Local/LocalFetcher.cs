@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
-using TagIt.Shared.Models.Contents;
 using TagIt.Shared.Models.Fetch;
 
 namespace TagIt.Shared.Models.Local
@@ -10,7 +9,7 @@ namespace TagIt.Shared.Models.Local
     {
         private string _rootPath;
 
-        public LocalFetcher(IContentProvider contentProvider, string rootPath) : base(contentProvider, "Local") => _rootPath = rootPath;
+        public LocalFetcher(string rootPath) : base("Local") => _rootPath = rootPath;
 
         public override Task Fetch() => Task.Run(() =>
         {
@@ -37,7 +36,7 @@ namespace TagIt.Shared.Models.Local
 
                 foreach (var content in SearchForContents(directoryPath))
                 {
-                    localFolder.AddChild(content);
+                    localFolder.AddContent(content);
                 }
 
                 yield return localFolder;

@@ -41,7 +41,7 @@ namespace TagIt.WPF.ViewModels.Explorers
                 if (!string.IsNullOrEmpty(_currentPath) && _fetcher.GetContentOrDefault(_currentPath) is IContent content && content.Parent is ContentSet<T> contentSet)
                 {
                     _currentPath = contentSet.Path;
-                    GenerateChildren(contentSet.Children, TagToggleButtonSetViewModel.SelectedItems);
+                    GenerateChildren(contentSet.Contents, TagToggleButtonSetViewModel.SelectedItems);
                 }
                 else
                 {
@@ -95,7 +95,7 @@ namespace TagIt.WPF.ViewModels.Explorers
         {
             if (content is IContentSet<T> contentSet)
             {
-                foreach (var child in contentSet.Children)
+                foreach (var child in contentSet.Contents)
                 {
                     if (IsTagged(child, tagName))
                     {
@@ -130,7 +130,7 @@ namespace TagIt.WPF.ViewModels.Explorers
         {
             if (contentSet is ContentSet<T> castContentSet)
             {
-                GenerateChildren(castContentSet.Children, TagToggleButtonSetViewModel.SelectedItems);
+                GenerateChildren(castContentSet.Contents, TagToggleButtonSetViewModel.SelectedItems);
                 _currentPath = contentSet.Path;
                 BackCommand.InvokeCanExecuteChanged();
                 //SwapChildren(_children);

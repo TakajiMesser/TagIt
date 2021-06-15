@@ -11,6 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TagIt.Droid", "TagIt.Droid\
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		TagIt.Shared\TagIt.Shared.projitems*{37b8ae2b-839a-4e37-95a8-168e48d97b5f}*SharedItemsImports = 4
 		TagIt.Shared\TagIt.Shared.projitems*{5ebb26ed-f587-4c8d-9c1b-32657691c011}*SharedItemsImports = 4
 		TagIt.Shared\TagIt.Shared.projitems*{fe49d35c-0ca1-46ff-8318-0db0b92fe521}*SharedItemsImports = 13
 	EndGlobalSection

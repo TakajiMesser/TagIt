@@ -55,10 +55,10 @@ namespace TagIt.WPF.ViewModels
 
         public void Initialize()
         {
-            _contentManager = new ContentManager();
+            _contentManager = new ContentManager(TagIt.Shared.Helpers.FilePathHelper.CACHE_DIRECTORY);
 
-            var localFetcher = new LocalFetcher(_contentManager, FilePathHelper.INITIAL_LOCAL_DIRECTORY);
-            var driveFetcher = new DriveFetcher(_contentManager);
+            var localFetcher = new LocalFetcher(FilePathHelper.INITIAL_LOCAL_DIRECTORY);
+            var driveFetcher = new DriveFetcher();
 
             _contentManager.AddFetcher(localFetcher);
             _contentManager.AddFetcher(driveFetcher);
@@ -133,7 +133,7 @@ namespace TagIt.WPF.ViewModels
             }
         }*/
 
-        public void SaveOnClose() => TagManager.Instance.SaveToLibrary(FilePathHelper.TAG_LIBRARY_PATH);
+        public void SaveOnClose() => TagManager.Instance.SaveToManifest(FilePathHelper.TAG_LIBRARY_PATH);
 
         public void OnTagTreeViewModelChanged()
         {

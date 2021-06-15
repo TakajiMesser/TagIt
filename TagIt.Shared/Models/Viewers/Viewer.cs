@@ -30,7 +30,7 @@ namespace TagIt.Shared.Models.Viewers
         }
 
         public event EventHandler ElementLoaded;
-        public event EventHandler ContentOpened;
+        public event EventHandler<ContentEventArgs> ContentOpened;
 
         public virtual void Open(IContent content)
         {
@@ -40,7 +40,7 @@ namespace TagIt.Shared.Models.Viewers
             if (IsLoaded)
             {
                 OpenContent();
-                //ContentOpened?.Invoke()
+                ContentOpened?.Invoke(this, new ContentEventArgs(Content));
             }
         }
 
@@ -51,6 +51,7 @@ namespace TagIt.Shared.Models.Viewers
             if (Content != null)
             {
                 OpenContent();
+                ContentOpened?.Invoke(this, new ContentEventArgs(Content));
             }
         }
 

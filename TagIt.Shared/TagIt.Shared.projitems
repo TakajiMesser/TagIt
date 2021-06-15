@@ -10,6 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\FilePathHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Contents\ContentEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Contents\IContentProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Contents\ContentSet.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Contents\Content.cs" />
@@ -33,6 +34,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\Fetch\Local\LocalFetcher.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Fetch\Local\LocalFile.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Fetch\Local\LocalFolder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Logging\Log.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Manifests\Manifest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Playlists\IPlaylist.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Playlists\Playlist.cs" />
@@ -54,7 +56,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\Viewers\IVideoPlayer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Viewers\Viewer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Viewers\IViewer.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Utilities\GeometryExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utilities\LINQExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utilities\ListExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utilities\MathExtensions.cs" />

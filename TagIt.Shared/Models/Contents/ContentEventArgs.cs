@@ -1,7 +1,6 @@
 ﻿using System;
-using TagIt.Shared.Models.Contents;
 
-namespace TagIt.WPF.ViewModels.Contents
+namespace TagIt.Shared.Models.Contents
 {
     public class ContentEventArgs : EventArgs
     {

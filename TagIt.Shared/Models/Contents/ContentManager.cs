@@ -25,6 +25,8 @@ namespace TagIt.Shared.Models.Contents
         public ContentManager(string cachePath)
         {
             _cachePath = cachePath;
+            Directory.CreateDirectory(_cachePath);
+
             LoadCacheManifests();
         }
 
@@ -55,6 +57,7 @@ namespace TagIt.Shared.Models.Contents
         public void AddFetcher<T>(ContentFetcher<T> fetcher) where T : IContent
         {
             _fetcherByContentType.Add(typeof(T), fetcher);
+            fetcher.ContentAdded += Fetcher_ContentAdded;
 
             if (fetcher is ICacher cacher)
             {
@@ -67,6 +70,8 @@ namespace TagIt.Shared.Models.Contents
                 cacher.ContentCached += Cacher_ContentCached;
             }
         }
+
+        private void Fetcher_ContentAdded(object sender, ContentEventArgs e) => AddContent(e.Content);
 
         public ContentFetcher<T> GetFetcher<T>() where T : IContent => (ContentFetcher<T>)_fetcherByContentType[typeof(T)];
         public bool HasFetcher<T>() where T : IContent => _fetcherByContentType.ContainsKey(typeof(T));

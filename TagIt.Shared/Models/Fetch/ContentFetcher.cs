@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using TagIt.Shared.Models.Contents;
 
@@ -6,16 +7,10 @@ namespace TagIt.Shared.Models.Fetch
 {
     public abstract class ContentFetcher<T> : IFetcher where T : IContent
     {
-        private IContentProvider _contentProvider;
-
         protected Dictionary<string, T> _contentByPath = new Dictionary<string, T>();
         protected List<string> _rootPaths = new List<string>();
 
-        public ContentFetcher(IContentProvider contentProvider, string name)
-        {
-            _contentProvider = contentProvider;
-            Name = name;
-        }
+        public ContentFetcher(string name) => Name = name;
 
         public string Name { get; }
 
@@ -30,10 +25,12 @@ namespace TagIt.Shared.Models.Fetch
             }
         }
 
+        public event EventHandler<ContentEventArgs> ContentAdded;
+
         protected void AddContent(T content)
         {
             _contentByPath.Add(content.Path, content);
-            _contentProvider.AddContent(content);
+            ContentAdded?.Invoke(this, new ContentEventArgs(content));
         }
 
         public T GetContentOrDefault(string path) => HasContent(path) ? GetContent(path) : default;

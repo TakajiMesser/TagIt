@@ -123,6 +123,7 @@
     <Compile Include="Models\Viewers\ImageViewer.cs" />
     <Compile Include="Models\Viewers\DocumentReader.cs" />
     <Compile Include="Models\Viewers\VideoPlayer.cs" />
+    <Compile Include="Utilities\GeometryExtensions.cs" />
     <Compile Include="ViewModels\AttachedBehaviors\KeyPress.cs" />
     <Compile Include="ViewModels\AttachedBehaviors\MouseLeftButtonUp.cs" />
     <Compile Include="ViewModels\AttachedBehaviors\MouseClick.cs" />
@@ -134,7 +135,6 @@
     <Compile Include="ViewModels\Commands\Command.cs" />
     <Compile Include="ViewModels\Commands\ICommand.cs" />
     <Compile Include="ViewModels\Commands\RelayCommand.cs" />
-    <Compile Include="ViewModels\Contents\ContentEventArgs.cs" />
     <Compile Include="ViewModels\Contents\IContentController.cs" />
     <Compile Include="ViewModels\Custom\IImageButton.cs" />
     <Compile Include="ViewModels\Custom\ToggleButtonSetViewModel.cs" />

@@ -9,7 +9,7 @@ namespace TagIt.WPF.Helpers
         internal static readonly string SOLUTION_DIRECTORY = AppDomain.CurrentDomain.BaseDirectory + @"..\..\..";
 
         public static string SETTINGS_PATH = SOLUTION_DIRECTORY + @"\TagIt.WPF\TagItSettings" + ProgramSettings.FILE_EXTENSION;
-        public static string TAG_LIBRARY_PATH = SOLUTION_DIRECTORY + @"\TagIt.WPF\TagLibrary" + TagLibrary.FILE_EXTENSION;
+        public static string TAG_LIBRARY_PATH = SOLUTION_DIRECTORY + @"\TagIt.WPF\TagManifest" + TagManifest.FILE_EXTENSION;
         public static string THUMBNAIL_LIBRARY_DIRECTORY = SOLUTION_DIRECTORY + @"\TagIt.WPF\ThumbnailLibraries";
         public static string THUMBNAIL_CACHE_DIRECTORY = @"D:\GitHub\TagIt\ThumbnailLibraries\Cache";//@"C:\Users\Takaji\source\repos\TagIt.WPF\TagIt.WPF\ThumbnailLibraries\Temp";
 
