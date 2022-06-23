@@ -191,7 +191,7 @@
       <Version>1.43.0.1835</Version>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
-      <Version>12.0.3</Version>
+      <Version>13.0.1</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.AndroidX.Leanback.Preference">
       <Version>1.0.0.5</Version>
